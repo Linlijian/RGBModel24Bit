@@ -16,5 +16,10 @@ namespace RGBModel24Bit
         {
             InitializeComponent();
         }
+
+        private void Open_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
