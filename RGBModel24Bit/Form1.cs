@@ -14,6 +14,7 @@ namespace RGBModel24Bit
     {
         private Bitmap f_image = null;  //input image
         public Bitmap image;
+        public Bitmap hit;
         public Form1()
         {
             InitializeComponent();
@@ -39,13 +40,94 @@ namespace RGBModel24Bit
                 }
             }
             image = new Bitmap(f_image.Width, f_image.Height);
+            hit = f_image;
             PicInput.Image = f_image;
         }
 
         private void Histogram_Click(object sender, EventArgs e)
         {
-            Hit a = new Hit(f_image);
+            Hit a = new Hit(hit);
             a.Show();
+        }
+
+        private void Brightness_Click(object sender, EventArgs e)
+        {
+            int[] r = new int[f_image.Width* f_image.Height];
+            int[] g = new int[f_image.Width * f_image.Height];
+            int[] b = new int[f_image.Width * f_image.Height];
+            double a;
+            int s;
+            double d = Convert.ToDouble(textBox1.Text);
+            int y = 0;
+            for (int i = 0; i < f_image.Width; i++)
+            {
+                for (int j = 0; j < f_image.Height; j++)
+                {
+
+                    Color PixelColor = f_image.GetPixel(i, j);
+                    int R = (int)(PixelColor.R);
+                    int G = (int)(PixelColor.G);
+                    int B = (int)(PixelColor.B);
+                    a = d / 100;
+                  
+                    r[y] = (int)(R * a);
+                    g[y] = (int)(G * a);
+                    b[y] = (int)(B * a);
+                    
+                    y++;
+                }
+            }
+             y = 0;
+            for (int i = 0; i < f_image.Width; i++)
+            {
+                for (int j = 0; j < f_image.Height; j++)
+                {
+                    image.SetPixel(i, j, Color.FromArgb(r[y], g[y], b[y]));
+                    y++;
+                }
+            }
+            PicOutput.Image = image;
+            hit = image;
+        }
+
+        private void Negative_Click(object sender, EventArgs e)
+        {
+            int[] r = new int[f_image.Width * f_image.Height];
+            int[] g = new int[f_image.Width * f_image.Height];
+            int[] b = new int[f_image.Width * f_image.Height];
+            double a;
+            int s;
+            double d = Convert.ToDouble(textBox1.Text);
+            int y = 0;
+            for (int i = 0; i < f_image.Width; i++)
+            {
+                for (int j = 0; j < f_image.Height; j++)
+                {
+
+                    Color PixelColor = f_image.GetPixel(i, j);
+                    int R = (int)(PixelColor.R);
+                    int G = (int)(PixelColor.G);
+                    int B = (int)(PixelColor.B);
+                    a = d / 100;
+
+                    r[y] = (int)(R * a + (255 - R));
+                    g[y] = (int)(G * a + (255 - G));
+                    b[y] = (int)(B * a + (255 - B));
+
+                    y++;
+                }
+            }
+            y = 0;
+            for (int i = 0; i < f_image.Width; i++)
+            {
+                for (int j = 0; j < f_image.Height; j++)
+                {
+                    image.SetPixel(i, j, Color.FromArgb(r[y], g[y], b[y]));
+                    y++;
+                }
+            }
+            PicOutput.Image = image;
+            hit = image;
         }
     }
 }

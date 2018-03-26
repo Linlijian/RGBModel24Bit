@@ -91,7 +91,7 @@
             // Histogram
             // 
             this.Histogram.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.Histogram.Location = new System.Drawing.Point(536, 85);
+            this.Histogram.Location = new System.Drawing.Point(536, 75);
             this.Histogram.Name = "Histogram";
             this.Histogram.Size = new System.Drawing.Size(193, 57);
             this.Histogram.TabIndex = 2;
@@ -102,26 +102,28 @@
             // Brightness
             // 
             this.Brightness.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.Brightness.Location = new System.Drawing.Point(536, 148);
+            this.Brightness.Location = new System.Drawing.Point(536, 187);
             this.Brightness.Name = "Brightness";
-            this.Brightness.Size = new System.Drawing.Size(193, 57);
+            this.Brightness.Size = new System.Drawing.Size(193, 39);
             this.Brightness.TabIndex = 2;
             this.Brightness.Text = "Brightness";
             this.Brightness.UseVisualStyleBackColor = true;
+            this.Brightness.Click += new System.EventHandler(this.Brightness_Click);
             // 
             // Negative
             // 
             this.Negative.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.Negative.Location = new System.Drawing.Point(536, 211);
+            this.Negative.Location = new System.Drawing.Point(536, 229);
             this.Negative.Name = "Negative";
-            this.Negative.Size = new System.Drawing.Size(193, 57);
+            this.Negative.Size = new System.Drawing.Size(193, 39);
             this.Negative.TabIndex = 2;
             this.Negative.Text = "Negative";
             this.Negative.UseVisualStyleBackColor = true;
+            this.Negative.Click += new System.EventHandler(this.Negative_Click);
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(536, 302);
+            this.textBox1.Location = new System.Drawing.Point(538, 161);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(178, 20);
             this.textBox1.TabIndex = 3;
@@ -129,7 +131,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(533, 286);
+            this.label3.Location = new System.Drawing.Point(535, 145);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(85, 13);
             this.label3.TabIndex = 1;
@@ -138,7 +140,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(716, 306);
+            this.label4.Location = new System.Drawing.Point(718, 165);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(15, 13);
             this.label4.TabIndex = 1;
@@ -148,7 +150,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(741, 334);
+            this.ClientSize = new System.Drawing.Size(741, 291);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.Negative);
             this.Controls.Add(this.Brightness);
