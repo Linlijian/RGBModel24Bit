@@ -97,6 +97,7 @@
             this.Histogram.TabIndex = 2;
             this.Histogram.Text = "Histogram";
             this.Histogram.UseVisualStyleBackColor = true;
+            this.Histogram.Click += new System.EventHandler(this.Histogram_Click);
             // 
             // Brightness
             // 
