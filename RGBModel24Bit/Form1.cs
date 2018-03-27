@@ -68,12 +68,22 @@ namespace RGBModel24Bit
                     int R = (int)(PixelColor.R);
                     int G = (int)(PixelColor.G);
                     int B = (int)(PixelColor.B);
-                    a = d / 100;
-                  
-                    r[y] = (int)(R * a);
-                    g[y] = (int)(G * a);
-                    b[y] = (int)(B * a);
-                    
+
+                    if(d >= 0)
+                    {
+                        a = d / 100;
+                        r[y] = (int)(R * a);
+                        g[y] = (int)(G * a);
+                        b[y] = (int)(B * a);
+                    }
+                    else
+                    {
+                        a = (d / 100) * -1;
+                        r[y] = (int)(255 - R * a);
+                        g[y] = (int)(255 - G * a);
+                        b[y] = (int)(255 - B * a);
+                    }                                       
+                                                        
                     y++;
                 }
             }
@@ -108,11 +118,21 @@ namespace RGBModel24Bit
                     int R = (int)(PixelColor.R);
                     int G = (int)(PixelColor.G);
                     int B = (int)(PixelColor.B);
-                    a = d / 100;
 
-                    r[y] = (int)(R * a + (255 - R));
-                    g[y] = (int)(G * a + (255 - G));
-                    b[y] = (int)(B * a + (255 - B));
+                    if (d >= 0)
+                    {
+                        a = d / 100;
+                        r[y] = (int)(R * a + (255 - R));
+                        g[y] = (int)(G * a + (255 - G));
+                        b[y] = (int)(B * a + (255 - B));
+                    }
+                    else
+                    {
+                        a = (d / 100) * -1;
+                        r[y] = (int)(255 - (R * a + (255 - R)));
+                        g[y] = (int)(255 - (G * a + (255 - G)));
+                        b[y] = (int)(255 - (B * a + (255 - B)));
+                    }
 
                     y++;
                 }
