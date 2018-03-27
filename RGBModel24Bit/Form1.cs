@@ -19,7 +19,6 @@ namespace RGBModel24Bit
         {
             InitializeComponent();
         }
-
         private void Open_Click(object sender, EventArgs e)
         {
             OpenFileDialog OpenFileImage = new OpenFileDialog();
@@ -43,13 +42,11 @@ namespace RGBModel24Bit
             hit = f_image;
             PicInput.Image = f_image;
         }
-
         private void Histogram_Click(object sender, EventArgs e)
         {
             Hit a = new Hit(hit);
             a.Show();
         }
-
         private void Brightness_Click(object sender, EventArgs e)
         {
             int[] r = new int[f_image.Width* f_image.Height];
@@ -69,19 +66,19 @@ namespace RGBModel24Bit
                     int G = (int)(PixelColor.G);
                     int B = (int)(PixelColor.B);
 
-                    if(d >= 0)
+                    if(d > 0)
                     {
-                        a = d / 100;
+                        a =  d / 100;
                         r[y] = (int)(R * a);
                         g[y] = (int)(G * a);
                         b[y] = (int)(B * a);
                     }
                     else
                     {
-                        a = (d / 100) * -1;
-                        r[y] = (int)(255 - R * a);
-                        g[y] = (int)(255 - G * a);
-                        b[y] = (int)(255 - B * a);
+                        a = d / 100*-1;
+                        r[y] = (int)(R * a + (255 - R));
+                        g[y] = (int)(G * a + (255 - G));
+                        b[y] = (int)(B * a + (255 - B));
                     }                                       
                                                         
                     y++;
@@ -99,7 +96,6 @@ namespace RGBModel24Bit
             PicOutput.Image = image;
             hit = image;
         }
-
         private void Negative_Click(object sender, EventArgs e)
         {
             int[] r = new int[f_image.Width * f_image.Height];
@@ -107,7 +103,7 @@ namespace RGBModel24Bit
             int[] b = new int[f_image.Width * f_image.Height];
             double a;
             int s;
-            double d = Convert.ToDouble(textBox1.Text);
+           
             int y = 0;
             for (int i = 0; i < f_image.Width; i++)
             {
@@ -119,20 +115,9 @@ namespace RGBModel24Bit
                     int G = (int)(PixelColor.G);
                     int B = (int)(PixelColor.B);
 
-                    if (d >= 0)
-                    {
-                        a = d / 100;
-                        r[y] = (int)(R * a + (255 - R));
-                        g[y] = (int)(G * a + (255 - G));
-                        b[y] = (int)(B * a + (255 - B));
-                    }
-                    else
-                    {
-                        a = (d / 100) * -1;
-                        r[y] = (int)(255 - (R * a + (255 - R)));
-                        g[y] = (int)(255 - (G * a + (255 - G)));
-                        b[y] = (int)(255 - (B * a + (255 - B)));
-                    }
+                    r[y] = 255 - R;
+                    g[y] = 255 - G;
+                    b[y] = 255 - B;
 
                     y++;
                 }

@@ -13,20 +13,17 @@ namespace RGBModel24Bit
     public partial class Hit : Form
     {
         private Bitmap f_image;
-
         public Hit(Bitmap a)
         {
             f_image = a;
             InitializeComponent();
         }
-
         private void Hit_Load(object sender, EventArgs e)
         {
             OriginalR();            
             OriginalG();
             OriginalB();
         }
-
         public void OriginalR()
         {
             int[] arrCo = new int[255];
