@@ -68,17 +68,29 @@ namespace RGBModel24Bit
 
                     if(d > 0)
                     {
-                        a =  d / 100;
-                        r[y] = (int)(R * a);
-                        g[y] = (int)(G * a);
-                        b[y] = (int)(B * a);
+                        a = d / 100 ;
+                        r[y] = (int)(R * a + (1 - a) + R);
+                        if (r[y] > 255)
+                            r[y] = 255;
+                        g[y] = (int)(G * a + (1 - a) + G);
+                        if (g[y] > 255)
+                            g[y] = 255;
+                        b[y] = (int)(B * a + (1 - a) + B);
+                        if (b[y] > 255)
+                            b[y] = 255;
                     }
                     else
                     {
-                        a = d / 100*-1;
-                        r[y] = (int)(R * a + (255 - R));
-                        g[y] = (int)(G * a + (255 - G));
-                        b[y] = (int)(B * a + (255 - B));
+                        a = d / 100;
+                        r[y] = (int)(R * a + R);
+                        if (r[y] < 0)
+                            r[y] = 0;
+                        g[y] = (int)(G * a + G);
+                        if (g[y] < 0)
+                            g[y] = 0;
+                        b[y] = (int)(B * a + B);
+                        if (b[y] < 0)
+                            b[y] = 0;
                     }                                       
                                                         
                     y++;
